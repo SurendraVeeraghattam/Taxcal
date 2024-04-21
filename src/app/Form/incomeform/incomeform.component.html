@@ -1,0 +1,36 @@
+<div class="form-box container">
+    <div class="taxform">
+        <h2>Income Form</h2>
+        <form id="Tax" [formGroup]="incomedetails" #form="ngForm">
+            <div class="label">
+                <label for="incomeValue">Income Value* :</label><br>
+                <input type="number" formControlName="incomeValue" placeholder="Income Value" class="form-control"
+                    [(ngModel)]="income.incomeValue" appColorchange>
+                <!-- <span style="color:red" *ngIf="incomeValue && incomeValue.invalid && incomeValue.touched">Required</span> -->
+                <span *ngIf="incomeValue && incomeValue.invalid" [innerHTML]="incomevalueref"
+                    style="color: red;"></span>
+            </div>
+            <div class="label">
+                <label for="interestValue">Interest Value :</label><br>
+                <input type="number" formControlName="interestValue" placeholder="Interest Value" class="form-control"
+                    appColorchange>
+            </div>
+            <div class="label">
+                <label for="other">Other source Value :</label><br>
+                <input type="number" formControlName="otherSourceValue" placeholder="Other Source Value"
+                    class="form-control" appColorchange>
+            </div>
+            <!-- <button [disabled]="incomedetails.invalid" type="submit" class="btn" (click)="postform()">Submit</button> -->
+            <button [disabled]="updatable" type="submit" class="btn" (click)="postform()">Submit</button>
+            <button *ngIf="submit" type="submit" class="btn" (click)="generate()">Generate</button>
+            <div class="nav">
+                <button class="navbtn" (click)="back()">
+                    <mat-icon>navigate_before</mat-icon>prev
+                </button>
+                <button class="navbtn1" (click)="navnext()">
+                    <mat-icon>navigate_next</mat-icon>next
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

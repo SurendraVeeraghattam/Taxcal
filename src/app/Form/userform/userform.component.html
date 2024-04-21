@@ -1,0 +1,51 @@
+
+  <div class="form-box container">
+    <div class="taxform">
+      <h2>Tax Form</h2>
+      <form id="Tax"  [formGroup]="userdetails" name="userdet">
+        <div>
+          <label for="userName" >User Name* :</label>
+          <input type="text" formControlName="userName"  placeholder="User Name" class="form-control" [(ngModel)]="user.userName" appColorchange required>
+          <!-- <span   *ngIf="userName && userName.invalid && userName.touched" style="color: red;">Required</span> -->
+          <div *ngIf="userName && userName.invalid" [innerHTML]="userNameref" style="color: red;"></div>
+        </div>
+        <div>
+          <label for="FinacialYear">Finacial Year* :</label><br>&nbsp;
+          <input type="radio" formControlName="finacialYear" value="2023 - 2024" [(ngModel)]="user.finacialYear">&nbsp;
+          <span id="2023 - 2024">Fy 2023-24</span>&nbsp;
+          <input type="radio" formControlName="finacialYear" value="2022 - 2023" [(ngModel)]="user.finacialYear">&nbsp;
+          <span id="2022 - 2023">Fy 2022-23</span>&nbsp;
+          <!-- <span *ngIf="finacialYear && finacialYear.invalid && finacialYear.touched" style="color: red;"></span> -->
+          <div *ngIf="finacialYear && finacialYear.invalid" [innerHTML]="finacialYearref"  style="color: red;"></div>
+        </div>
+        <div>
+          <label for="age">Age group* :</label><br>&nbsp;
+          <input type="radio" formControlName="age" value="0-60" [(ngModel)]="user.age">&nbsp;
+          <span id="0-60">0Y - 60Y</span>&nbsp;
+          <input type="radio" formControlName="age" value="60-80" [(ngModel)]="user.age">&nbsp;
+          <span id="60-80">60Y - 80Y</span>&nbsp;
+          <input type="radio" formControlName="age" value="80&above" [(ngModel)]="user.age">&nbsp;
+          <span id="80&above">80Y & Above</span>&nbsp;
+          <!-- <span *ngIf="age && age.invalid && age.touched" style="color: red;"></span> -->
+          <div *ngIf="age && age.invalid" [innerHTML]="ageref"  style="color: red;"></div>
+        </div>
+        <div>
+          <label for="earn">Type Of Earning* :</label><br>&nbsp;
+          <input type="radio" formControlName="earn" value="salaried" [(ngModel)]="user.earn">&nbsp;
+          <span id="salaried">Salaried</span>&nbsp;
+          <input type="radio" formControlName="earn" value="bussiness" [(ngModel)]="user.earn">&nbsp;
+          <span id="bussiness">Bussiness</span>&nbsp;
+          <input type="radio" formControlName="earn" value="pensioner" [(ngModel)]="user.earn">&nbsp;
+          <span id="pensioner">Pensioner</span>&nbsp;
+          <!-- <span  *ngIf="earn && earn.invalid && earn.touched" style="color: red;"></span> -->
+          <div *ngIf="earn && earn.invalid" [innerHTML]="earnref"  style="color: red;" ></div>
+        </div>
+        <!-- <button [disabled]="userdetails.invalid || updatable" type="submit" class="btn btn-primary" (click)="postform()">Submit</button> -->
+        <button  type="submit" class="btn" (click)="Saving()">Save</button>
+        <button  type="submit" class="btn" (click)="get()">View</button>
+        <button [disabled]="!updatable" type="submit" class="btn btn-primary" (click)="update(userdetails.value)">update</button>
+        <button [disabled]="!updatable" class="navbtn" (click)="navnext()"><mat-icon>navigate_next</mat-icon>next</button>
+      </form>
+    </div>
+  </div>
+  

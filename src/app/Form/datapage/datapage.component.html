@@ -1,0 +1,144 @@
+<div class="search-bar">
+  <input type="search" class="searchbar" class="form-control" autocomplete="off" placeholder="Search here...."
+     [(ngModel)]="searchTerm">
+  <button class="searchbutton" (click)="applySearch()">Search</button>
+  <mat-icon class="search-icon">search</mat-icon>
+  <!-- <div class="for-search"><button type="submit" class="forsearch" (click)="search(searchterm)">search<mat-icon>search</mat-icon></button></div> -->
+  <button mat-raised-button class="popup" (click)="filterpopup()">Filter</button>
+  <div class="year-select" *ngIf="popup">
+    <!-- <div class="container"> -->
+
+    <select [(ngModel)]="selectedEarn" (change)="typeselect($event)" class="form-select earn-select">
+      <option value="" disabled selected hidden>EarnType</option>
+      <option *ngFor="let item of earns" [value]="item">{{item}}</option>
+    </select>
+
+    <!-- <select [(ngModel)]="selectedYear" (change)="financialYear()" class="form-select financialyear-select">
+        <option value="" disabled selected hidden>FinancialYear</option>
+        <option *ngFor="let item of finacialyear" [value]="item">{{item}}</option>
+      </select> -->
+
+    <div class="year-date">
+      <p-calendar [(ngModel)]="selectedYear" view="year" yearRange="2022:2024" dateFormat="yy" placeholder="year"
+        selectionMode="range" [readonlyInput]="true" class="form-control">
+      </p-calendar>
+
+    </div>
+    <div class="buttons">
+      <button class="ok" (click)="typeselectyear()">Ok</button>
+      <!-- <button class="ok" (click)="controlFilter()">Ok</button> -->
+      <button class="cancel" (click)="cancelFilter()">cancel</button>
+    </div>
+    <!-- </div> -->
+    <!-- <mat-icon class="arrow-down" >keyboard_arrow_down</mat-icon> -->
+  </div>
+ </div>
+<div class="table-m">
+  <table mat-table [dataSource]="dataSource" Matsort class="mat-elevation-z8">
+    <!-- <table mat-table [dataSource]="dataSource.length > 0 &&
+    dataSource.length > 0 ? dataSource : emptyData" Matsort class="mat-elevation-z8"> -->
+
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User_Id </th>
+      <td mat-cell *matCellDef="let element" (click)="transferById(element)"> {{element.userId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> User Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="finacialYear">
+      <th mat-header-cell *matHeaderCellDef> Finacial Year </th>
+      <td mat-cell *matCellDef="let element"> {{element.finacialYear}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="earn">
+      <th mat-header-cell *matHeaderCellDef> Earning Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.earn}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="incomeId">
+      <th mat-header-cell *matHeaderCellDef> Income Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.incomeId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="incomeValue">
+      <th mat-header-cell *matHeaderCellDef> Income Value </th>
+      <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.incomeValue | currency:'INR':'symbol':'1.2-2'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="interestValue">
+      <th mat-header-cell *matHeaderCellDef> Interest Value </th>
+      <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.interestValue | currency:'INR':'symbol':'1.2-2'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="otherSourceValue">
+      <th mat-header-cell *matHeaderCellDef> OtherSource Value </th>
+      <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.otherSourceValue | currency:'INR':'symbol':'1.2-2'}} 
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Tax">
+      <th mat-header-cell *matHeaderCellDef> Total Tax </th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{Taxcolor:(element.incomeDetModel.Tax > 1000000),Taxcolor1:(element.incomeDetModel.Tax < 1000000)}"> 
+        {{element.incomeDetModel.Tax | currency:'INR':'symbol':'1.2-2'}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="NetSalary">
+      <th mat-header-cell *matHeaderCellDef> Net Salary</th>
+      <td mat-cell *matCellDef="let element"  [ngClass]="{Salarycolor:(element.incomeDetModel.Tax >1000000),Salarycolor1:(element.incomeDetModel.Tax < 1000000)}">
+         {{element.incomeDetModel.NetSalary | currency:'INR':'symbol':'1.2-2'}}
+      </td>
+    </ng-container>
+
+    <div>
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef class="fix"> Edit</th>
+        <td mat-cell *matCellDef="let element" class="fixedrow">
+          <button class="tabbtn" mat-button (click)="edit(element)">Edit
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef class="fix"> Delete</th>
+        <td mat-cell *matCellDef="let element" class="fixedrow">
+          <button class="tabbtnd" mat-button (click)="deletebyid(element)">Delete
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="noData" matColumnDef="empty-row">
+      <td colspan="13" mat-cell *matCellDef="let element" style="color: white;">No Data Found</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <!-- <tr mat-row *matRowDef="let row; columns: getdata.length > 0 &&
+      getdata.length > 0 ? displayedColumns: ['empty-row'];" class="empty-row"></tr> -->
+    <tr mat-row *matRowDef="let row; columns:  displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator
+   #paginator
+    [pageSize]="4"
+    [pageSizeOptions]="[4,8,16,32]"
+    [length]="totalData" 
+    showFirstLastButtons>
+  </mat-paginator>
+
+<div class="d-b-btn">
+  <button type="submit" class="btn btn-primary" (click)="getdownload()">Download</button>
+  <button type="submit" class="btn1 btn-primary" (click)="back()">Back</button>
+</div>

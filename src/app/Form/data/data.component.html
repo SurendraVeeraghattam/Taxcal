@@ -1,0 +1,82 @@
+<div class="table-s">
+<table mat-table [dataSource]="userdata" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef> User_Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> User Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="finacialYear">
+      <th mat-header-cell *matHeaderCellDef> Finacial Year </th>
+      <td mat-cell *matCellDef="let element"> {{element.finacialYear}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="earn">
+        <th mat-header-cell *matHeaderCellDef> Earning Type </th>
+        <td mat-cell *matCellDef="let element"> {{element.earn}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="incomeId">
+      <th mat-header-cell *matHeaderCellDef> Income Id </th>
+      <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.incomeId}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="incomeValue">
+        <th mat-header-cell *matHeaderCellDef> Income Value </th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.incomeValue | currency:'INR':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="interestValue">
+        <th mat-header-cell *matHeaderCellDef> Interest Value </th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.interestValue | currency:'INR':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="otherSourceValue">
+        <th mat-header-cell *matHeaderCellDef> OtherSource Value </th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.otherSourceValue | currency:'INR':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Tax">
+        <th mat-header-cell *matHeaderCellDef> Total Tax </th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.Tax | currency:'INR':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="NetSalary">
+        <th mat-header-cell *matHeaderCellDef> Net Salary</th>
+        <td mat-cell *matCellDef="let element"> {{element.incomeDetModel.NetSalary | currency:'INR':'symbol':'1.2-2'}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Edit</th>
+      <td mat-cell *matCellDef="let element" >
+      <button class="tabbtn" mat-button (click)="edit(element)">Edit
+        <mat-icon>edit</mat-icon>
+      </button></td>
+    </ng-container><br>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete</th>
+      <td mat-cell *matCellDef="let element">
+      <button class="tabbtnd" mat-button (click)="deleteid(element)">Delete
+        <mat-icon>delete</mat-icon>
+      </button></td>
+    </ng-container><br>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+<div class="d-b-btn">
+   <button type="submit" class="btn btn-primary" (click)="getdownloaduser()">Download</button>
+   <button type="submit" class="btn1 btn-primary" (click)="back()">Back</button>
+  </div>

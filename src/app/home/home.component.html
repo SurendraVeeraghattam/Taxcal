@@ -1,0 +1,51 @@
+<!-- <mat-sidenav-container>
+  <mat-sidenav mode="side" opened="true" #sidenav class="side-nav">
+    <mat-nav-list>
+      <div class="main-li">
+        <div>
+          <div class="ge-l-1">
+            <mat-list-item><a href=" "><span>Workqueue</span></a></mat-list-item>
+          </div>
+          <div class="de-l-2">
+            <mat-list-item routerLink=" /custom-grid"><span>Detail</span></mat-list-item>
+          </div>
+        </div>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content id="content" class="m-l-0" style="margin-left:12rem">
+    <div class="h-100">
+    </div>
+  </mat-sidenav-content>
+
+</mat-sidenav-container> -->
+<body class="homepage">
+<div class="row">
+  <div class="left">
+    <h2>Menu</h2>
+    <ul id="myMenu">
+      <li ><a routerLink="/home" class="links">Info</a></li>
+      <li ><a routerLink="/datapage" class="links">View</a></li>
+    </ul>
+  </div>
+  <div class="right">
+    <div class="card-top container-fluid">
+      <div class="container ">
+        <div class="item">
+          <h1>User Tax Calculation</h1>
+          <h3>As per below Standards user can calculate the tax according to there Earnings or Income of the Perspective year.</h3>
+          <h4>Rs.0 to 7 lakh - 0% tax rate</h4>
+          <h4> Rs.7 lakh to 9 lakh - 5% </h4>
+          <h4> Rs.9 lakh to 12 lakh - 10%</h4>
+          <h4> Rs.12 lakh to 15 lakh - 15%</h4>
+          <h4> Above Rs.15 lakh - 30%</h4>
+          <h4> Standard deduction of Rs 50000</h4>
+          <button class="calculate" (click)="user()">Calculate
+            <mat-icon>navigate_next</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

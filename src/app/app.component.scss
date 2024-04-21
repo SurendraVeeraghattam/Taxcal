@@ -1,0 +1,36 @@
+
+.mat-toolbar{
+    background: #00a115;
+    border-radius: 10px;
+    height: 6vh;
+    opacity: 80%;
+    width: auto;
+    color: #120404;
+    margin: 15px;
+    letter-spacing: 0px;
+}
+@media screen and (max-width: 600px){
+    .mat-toolbar{
+        width: 100%; 
+    }
+    
+}
+
+.Tax{
+    font-size: 125%;
+    font-weight: bold;
+    width: auto;
+}
+
+button{
+    margin-top: 4px;
+    margin-left: 25px;
+    margin-bottom: 4px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+    background-color: aquamarine
+}

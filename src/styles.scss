@@ -1,0 +1,38 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+body{
+    background-image: url('./assets/images/cooperation.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow-y: hidden;
+}
+@media screen and (max-width: 600px){
+    body{
+        width: 100%; 
+    }
+    
+}
+
+toastr-link{
+    color: green !important;
+    position: top;
+  }
+
+  .p-calendar .p-datepicker {
+    height: 220px;
+    width: 195px;
+    background-color: white;
+    border-radius: 10px;
+  }
+
+  .p-datepicker-prev, .p-datepicker-next {
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    width: 25px;
+    height: 20px;
+}
