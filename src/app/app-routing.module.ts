@@ -5,6 +5,8 @@ import { DatapageComponent } from './Form/datapage/datapage.component';
 import { IncomeformComponent } from './Form/incomeform/incomeform.component';
 import { UserformComponent } from './Form/userform/userform.component';
 import { HomeComponent } from './home/home.component';
+import { SignupComponent } from './Form/signup/signup.component';
+import { LoginComponent } from './Form/login/login.component';
 
 const routes: Routes = [
   {path:'userform', component:UserformComponent},
@@ -12,6 +14,8 @@ const routes: Routes = [
   {path:'datapage', component:DatapageComponent},
   {path:'data', component:DataComponent},
   {path:'home',component:HomeComponent},
+  {path:'signup',component:SignupComponent},
+  {path:'login',component:LoginComponent},
   {path:'',redirectTo:'userform,home,datapage',pathMatch:'full'}
 ];
 

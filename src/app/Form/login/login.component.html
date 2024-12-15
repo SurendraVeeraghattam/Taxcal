@@ -1,0 +1,16 @@
+<div class="form-box container">
+    <div class="loginform">
+      <h2>Tax Form</h2>
+      <form id="Tax"  [formGroup]="loginuserdetails" name="userdet">
+        <div>
+          <label for="Email">Email* :</label><br>&nbsp;
+          <input type="text" formControlName="email"  placeholder="Email" class="form-control" [(ngModel)]="user.email" appColorchange required>
+        </div>
+        <div>
+          <label for="Password">Password* :</label><br>&nbsp;
+          <input type="text" formControlName="password"  placeholder="Password" class="form-control" [(ngModel)]="user.password" appColorchange required>
+        </div>
+        <button  type="submit" class="btn">Login</button>
+      </form>
+    </div>
+  </div>

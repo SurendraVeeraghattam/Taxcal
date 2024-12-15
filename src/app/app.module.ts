@@ -36,6 +36,8 @@ import { DateAdapter } from '@angular/material/core';
 import { AppDateAdapter } from './pipe/app-date-adapter';
 import { MatSort } from '@angular/material/sort';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { SignupComponent } from './Form/signup/signup.component';
+import { LoginComponent } from './Form/login/login.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +49,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ColorchangeDirective,
     HomeComponent,
     AcademicyearPipe,
+    SignupComponent,
+    LoginComponent,
    
     // CurrencyPipe
   ],

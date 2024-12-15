@@ -1,0 +1,25 @@
+<div class="form-box container">
+    <div class="signupform">
+      <h2>Tax Form</h2>
+      <form id="Tax"  [formGroup]="signupuserdetails" name="userdet">
+        <div>
+          <label for="userName" >User Name* :</label>
+          <input type="text" formControlName="userName"  placeholder="User Name" class="form-control" [(ngModel)]="user.userName" appColorchange required>
+        </div>
+        <div>
+          <label for="Email">Email* :</label><br>&nbsp;
+          <input type="text" formControlName="email"  placeholder="Email" class="form-control" [(ngModel)]="user.email" appColorchange required>
+        </div>
+        <div>
+          <label for="Password">Password* :</label><br>&nbsp;
+          <input type="text" formControlName="password"  placeholder="Password" class="form-control" [(ngModel)]="user.password" appColorchange required>
+        </div>
+        <div>
+          <label for="confirm">Confirm Password* :</label><br>&nbsp;
+          <input type="text" formControlName="confirm"  placeholder="Confirm Password" class="form-control" [(ngModel)]="user.confirm" appColorchange required>
+        </div>
+        <!-- <button [disabled]="userdetails.invalid || updatable" type="submit" class="btn btn-primary" (click)="postform()">Submit</button> -->
+        <button  type="submit" class="btn">Sign up</button>
+      </form>
+    </div>
+  </div>

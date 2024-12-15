@@ -1,0 +1,49 @@
+.form-box {
+    width: 340px;
+    padding: 0%;
+    margin: 30px auto 0px auto;
+}
+
+.signupform {
+    background-color: #000000;
+    border-radius: 10%;
+    opacity: 80%;
+    width: 495px;
+    padding-left: 12px;
+}
+
+form {
+    font-weight: 500;
+    color: aliceblue;
+}
+
+h2 {
+    text-align: center;
+    color: aliceblue;
+}
+
+div {
+    padding: 1%;
+    width: 470px;
+}
+
+.btn {
+    text-align: center;
+    width: 15%;
+    padding: 5px;
+    position: relative;
+    left: 190px;
+    margin-top: 20px;
+    margin-right: -70px;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.valid {
+    color: red;
+}
+
+button:hover {
+    color: rgb(8, 160, 33);
+}
